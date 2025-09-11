@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form_AGSUNOD</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Google Fonts + Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FDF7F4;
+      --primary: #8EB486;
+      --secondary: #997C70;
+      --text: #333;
+      --white: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      margin: 0;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--text);
+    }
+
+    h2 {
+      color: var(--secondary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.2rem;
+    }
+
+    form {
+      background: var(--white);
+      margin: 15px 0;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      max-width: 400px;
+      width: 100%;
+      transition: transform 0.3s ease;
+    }
+
+    form:hover {
+      transform: scale(1.02);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    input, select, textarea, button {
+      margin-top: 5px;
+      padding: 10px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      transition: border 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 4px rgba(142, 180, 134, 0.5);
+    }
+
+    button {
+      margin-top: 15px;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background: #6f9367;
+      transform: translateY(-2px);
+    }
+
+    .error {
+      border: 2px solid red;
+    }
+
+    .counter {
+      font-size: 0.85rem;
+      color: #555;
+      text-align: right;
+      margin-top: 5px;
+    }
+
+    /* Icons inside input */
+    .input-group {
+      position: relative;
+    }
+
+    .input-group i {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      color: #aaa;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Login Form -->
+  <form id="loginForm">
+    <h2><i class="fas fa-sign-in-alt"></i> Login</h2>
+    <div class="input-group">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" placeholder="Enter your username" required>
+      <i class="fa-solid fa-user"></i>
+    </div>
+
+    <div class="input-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      <i class="fa-solid fa-lock"></i>
+    </div>
+
+    <button type="submit"><i class="fas fa-arrow-right"></i> Login</button>
+  </form>
+
+  <!-- Email Form -->
+  <form id="emailForm">
+    <h2><i class="fas fa-envelope"></i> Email</h2>
+    <div class="input-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      <i class="fa-solid fa-at"></i>
+    </div>
+    <button type="submit"><i class="fas fa-paper-plane"></i> Submit</button>
+  </form>
+
+  <!-- Role Selection -->
+  <form id="roleForm">
+    <h2><i class="fas fa-users"></i> Choose your role</h2>
+    <input type="radio" id="student" name="role" value="student">
+    <label for="student">Student</label>
+    <input type="radio" id="teacher" name="role" value="teacher">
+    <label for="teacher">Teacher</label>
+  </form>
+
+  <!-- Interests -->
+  <form id="interestForm">
+    <h2><i class="fas fa-heart"></i> Select your interests</h2>
+    <input type="checkbox" id="html" name="interest" value="HTML">
+    <label for="html">HTML</label>
+    <input type="checkbox" id="css" name="interest" value="CSS">
+    <label for="css">CSS</label>
+  </form>
+
+  <!-- Country and Message -->
+  <form id="infoForm">
+    <h2><i class="fas fa-globe"></i> Additional Info</h2>
+    <label for="country">Country:</label>
+    <select id="country" name="country">
+      <option value="ph">Philippines</option>
+      <option value="us">United States</option>
+      <option value="jp">Japan</option>
+    </select>
+
+    <label for="message">Your Message:</label>
+    <textarea id="message" name="message" rows="4" placeholder="Type your message here..."></textarea>
+  </form>
+
+  <!-- Password Toggle -->
+  <form id="pwdForm">
+    <h2><i class="fas fa-eye"></i> Password Toggle</h2>
+    <div class="input-group">
+      <input type="password" id="pwd" placeholder="Enter password">
+      <i class="fa-solid fa-key"></i>
+    </div>
+    <button type="button" id="toggle"><i class="fas fa-eye-slash"></i> Show/Hide</button>
+  </form>
+
+  <!-- Character Counter -->
+  <form id="bioForm">
+    <h2><i class="fas fa-pen"></i> Bio</h2>
+    <textarea id="bio" maxlength="100" placeholder="Write about yourself..."></textarea>
+    <p id="count" class="counter">0/100</p>
+  </form>
+
+  <!-- Simple Validation -->
+  <form id="formCheck">
+    <h2><i class="fas fa-check-circle"></i> Validation Form</h2>
+    <input type="text" id="name" placeholder="Enter your name">
+    <button type="submit"><i class="fas fa-paper-plane"></i> Submit</button>
+  </form>
+
+  <!-- Scripts -->
+  <script>
+    $('#loginForm').submit(function(e) {
+      e.preventDefault();
+      if ($('#username').val() === "" || $('#password').val() === "") {
+        alert("Please fill in all fields");
+      } else {
+        alert("Login successful");
+      }
+    });
+
+    $('#emailForm').submit(function(e) {
+      e.preventDefault();
+      alert("Email submitted: " + $('#email').val());
+    });
+
+    $('#toggle').on('click', function() {
+      let pwd = $('#pwd');
+      pwd.attr('type', pwd.attr('type') === 'password' ? 'text' : 'password');
+    });
+
+    $('#bio').on('input', function() {
+      $('#count').text($(this).val().length + "/100");
+    });
+
+    $('#formCheck').submit(function(e) {
+      e.preventDefault();
+      if ($('#name').val() === "") {
+        $('#name').addClass('error');
+      } else {
+        $('#name').removeClass('error');
+        alert("Form submitted!");
+      }
+    });
+  </script>
+
+</body>
+</html>

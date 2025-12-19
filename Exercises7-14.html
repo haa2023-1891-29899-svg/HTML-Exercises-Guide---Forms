@@ -1,0 +1,62 @@
+<div style="font-family: sans-serif; max-width: 400px; margin: 20px auto; padding: 25px; background: #f9f9f9; border: 1px solid #eee; border-radius: 12px;">
+    <h3 style="margin-top:0;">Hezekiah's Simple Interactive Login(Activity 7-14) </h3>
+    <form id="interactiveForm">
+        <style> .error-style { border: 2px solid #ff4757 !important; background-color: #fff1f2; } </style>
+        
+        <div style="margin-bottom: 15px;">
+            <label>Username</label>
+            <input type="text" id="js-user" style="width:100%; padding:8px; border-radius:5px; border:1px solid #ccc;">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label>Password</label>
+            <div style="display: flex;">
+                <input type="password" id="js-pwd" style="flex-grow:1; padding:8px; border-top-left-radius:5px; border-bottom-left-radius:5px; border:1px solid #ccc;">
+                <button type="button" id="toggleBtn" style="padding:8px; background:#ddd; border:1px solid #ccc; cursor:pointer;">Show</button>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label>About Me (Max 100 chars)</label>
+            <textarea id="js-bio" maxlength="100" style="width:100%; padding:8px; border-radius:5px; border:1px solid #ccc;"></textarea>
+            <div id="js-count" style="text-align:right; font-size:12px; color:#666;">0/100</div>
+        </div>
+
+        <button type="submit" style="width:100%; padding:10px; background:#2ed573; color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer;">Submit</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Exercise 11: jQuery Password Toggle
+    $("#toggleBtn").click(function(){
+        let pwd = $("#js-pwd");
+        let type = pwd.attr("type") === "password" ? "text" : "password";
+        pwd.attr("type", type);
+        $(this).text(type === "password" ? "Show" : "Hide");
+    });
+
+    // Exercise 12: jQuery Live Character Count
+    $("#js-bio").on("input", function(){
+        $("#js-count").text($(this).val().length + "/100");
+    });
+
+    // Exercise 13 & 14: jQuery Validation & Highlight
+    $("#interactiveForm").submit(function(e){
+        e.preventDefault();
+        let isValid = true;
+        
+        if($("#js-user").val() === "") {
+            $("#js-user").addClass("error-style");
+            isValid = false;
+        } else {
+            $("#js-user").removeClass("error-style");
+        }
+
+        if(isValid) {
+            alert("Form submitted with jQuery!"); // Exercise 10
+        } else {
+            alert("Please fill in the required fields.");
+        }
+    });
+</script>

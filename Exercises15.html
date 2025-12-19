@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #eef2f3; display: flex; justify-content: center; padding: 40px; }
+        .reg-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); width: 100%; max-width: 450px; }
+        .error { border: 2px solid #ff4d4d !important; background-color: #fff2f2; }
+        label { font-weight: bold; display: block; margin-top: 15px; font-size: 14px; }
+        input[type="text"], input[type="email"], input[type="password"], select, textarea {
+            width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;
+        }
+        .btn-submit { background-color: #6c5ce7; color: white; border: none; padding: 12px; width: 100%; border-radius: 6px; cursor: pointer; font-size: 16px; margin-top: 20px; transition: 0.3s; }
+        .btn-submit:hover { background-color: #5b4cc4; }
+    </style>
+</head>
+<body>
+
+<div class="reg-card">
+    <h2 style="margin-top: 0; color: #2d3436;">Create Account</h2>
+    <form id="registrationForm">
+        <label for="reg-user">Username</label>
+        <input type="text" id="reg-user" placeholder="Choose a username">
+
+        <label for="reg-email">Email Address</label>
+        <input type="email" id="reg-email" placeholder="you@example.com">
+
+        <label for="reg-pass">Password</label>
+        <div style="display: flex; gap: 5px; align-items: center;">
+            <input type="password" id="reg-pass" placeholder="••••••••">
+            <button type="button" id="togglePass" style="padding: 10px; font-size: 12px;">Toggle</button>
+        </div>
+
+        <label>Gender</label>
+        <div style="margin-top: 5px;">
+            <input type="radio" name="gender" value="male" id="m"> <label for="m" style="display:inline; font-weight: normal;">Male</label>
+            <input type="radio" name="gender" value="female" id="f"> <label for="f" style="display:inline; font-weight: normal;">Female</label>
+        </div>
+
+        <label for="reg-bio">Short Bio</label>
+        <textarea id="reg-bio" rows="3" maxlength="100" placeholder="Tell us about yourself..."></textarea>
+        <div id="charCount" style="font-size: 12px; text-align: right; color: #636e72;">0/100</div>
+
+        <button type="submit" class="btn-submit">Register Now</button>
+    </form>
+</div>
+
+<script>
+$(document).ready(function() {
+    // Live Character Count (Exercise 12)
+    $("#reg-bio").on("input", function() {
+        $("#charCount").text($(this).val().length + "/100");
+    });
+
+    // Password Toggle (Exercise 11)
+    $("#togglePass").click(function() {
+        let passField = $("#reg-pass");
+        passField.attr("type", passField.attr("type") === "password" ? "text" : "password");
+    });
+
+    // Validation Logic (Exercise 13 & 14)
+    $("#registrationForm").submit(function(e) {
+        e.preventDefault();
+        let isValid = true;
+
+        // Simple check for empty fields
+        $("input[type='text'], input[type='email'], input[type='password']").each(function() {
+            if ($(this).val() === "") {
+                $(this).addClass("error");
+                isValid = false;
+            } else {
+                $(this).removeClass("error");
+            }
+        });
+
+        if (isValid) {
+            alert("Registration Successful!");
+            this.reset();
+            $("#charCount").text("0/100");
+        } else {
+            alert("Please fill in the required fields highlighted in red.");
+        }
+    });
+});
+</script>
+
+</body>
+</html>

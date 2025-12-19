@@ -1,0 +1,37 @@
+<div style="font-family: 'Segoe UI', sans-serif; max-width: 450px; margin: 20px auto; padding: 30px; background: #ffffff; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+    <h2 style="color: #333; margin-bottom: 20px; text-align: center;">User Profile</h2>
+    <form>
+        <label for="user1" style="display: block; font-weight: 600; margin-bottom: 5px;">Username</label>
+        <input type="text" id="user1" name="username" placeholder="Enter username" required minlength="3" maxlength="10" 
+               style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;">
+
+        <label for="email1" style="display: block; font-weight: 600; margin-bottom: 5px;">Email Address</label>
+        <input type="email" id="email1" name="email" placeholder="you@example.com" required 
+               style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;">
+
+        <p style="font-weight: 600; margin-bottom: 10px;">Account Role:</p>
+        <div style="margin-bottom: 20px;">
+            <input type="radio" id="student" name="role" value="student"> <label for="student" style="margin-right: 15px;">Student</label>
+            <input type="radio" id="teacher" name="role" value="teacher"> <label for="teacher">Teacher</label>
+        </div>
+
+        <p style="font-weight: 600; margin-bottom: 10px;">Skill Interests:</p>
+        <div style="margin-bottom: 20px;">
+            <input type="checkbox" id="html" name="interest" value="HTML"> <label for="html" style="margin-right: 15px;">HTML</label>
+            <input type="checkbox" id="css" name="interest" value="CSS"> <label for="css">CSS</label>
+        </div>
+
+        <label for="country" style="display: block; font-weight: 600; margin-bottom: 5px;">Country</label>
+        <select id="country" name="country" style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; background: white;">
+            <option value="ph">Philippines</option>
+            <option value="us">United States</option>
+            <option value="jp">Japan</option>
+        </select>
+
+        <label for="msg" style="display: block; font-weight: 600; margin-bottom: 5px;">Short Bio</label>
+        <textarea id="msg" name="message" rows="4" placeholder="Tell us about yourself..." 
+                  style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; resize: vertical;"></textarea>
+
+        <button type="submit" style="width: 100%; padding: 12px; margin-top: 20px; background: #4a90e2; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Save Profile</button>
+    </form>
+</div>
